@@ -1,0 +1,24 @@
+(define (square x) (* x x))
+(define (cube x) (* x x x))
+(define (inc x) (+ x 1))
+(define (dec x) (- x 1))
+
+(define (map f lst) (if (null? lst) nil (cons (f (car lst)) (map f (cdr lst)))))
+
+(define (filter pred lst)
+    (cond ((null? lst) nil)
+          ((pred (car lst))(cons (car lst) (filter pred (cdr lst))))
+          ('t (filter pred (cdr lst)))))
+
+(define (pred comp n)
+    (lambda (x)
+        (if (comp x n)
+            't
+            '())))
+
+(define (f x y)
+(let* (a (+ 1 (* x y))
+b (- 1 y))
+(+ (* x (square a))
+(* y b)
+(* a b))))

@@ -1,0 +1,98 @@
+'(Tests from Graham Article)
+
+(quote (test quote))
+
+(begin (display (quote a)) (display 'a) (quote (a b c)))
+
+
+(quote (test atom))
+(atom 'a)
+(atom '(a b c))
+(atom '())
+(atom (atom 'a))
+(atom '(atom 'a))
+
+(quote (test eq))
+(eq 'a 'a)
+(eq 'a 'b)
+(eq '() '())
+
+(quote (test car))
+(car '(a b c))
+
+(quote (test cdr))
+(cdr '(a b c))
+
+(quote (test cons))
+(cons 'a '(b c))
+(cons 'a (cons 'b (cons 'c '())))
+(car (cons 'a '(b c)))
+(cdr (cons 'a '(b c)))
+
+(quote (test cond))
+(cond ((eq 'a 'b) 'first)
+      ((atom 'a) 'second))
+
+(quote (test lambda))
+((lambda (x) (cons x '(b))) 'a)
+((lambda (x y) (cons x (cdr y)))
+'z
+'(a b c))
+((lambda (f) (f '(b c)))
+(lambda (x) (cons 'a x)))
+
+(quote (The following Tests require graham.txt to be loaded))
+
+(quote (test subst))
+(subst 'm 'b '(a b (a b c) d))
+
+(quote (test null.))
+(null. 'a)
+(null. '())
+
+(quote (test and.))
+(and. (atom 'a) (eq 'a 'a))
+(and. (atom 'a) (eq 'a 'b))
+
+(quote (test not.))
+(not. (eq 'a 'a))
+(not. (eq 'a 'b))
+
+(quote (test append.))
+(append. '(a b) '(c d))
+(append. '() '(c d))
+
+(quote (test pair.))
+(pair. '(x y z) '(a b c))
+
+(quote (test assoc.))
+(assoc. 'x '((x a) (y b)))
+(assoc. 'x '((x new) (x a) (y b)))
+
+(quote (test eval.))
+
+(eval. 'x '((x a) (y b)))
+
+(eval. '(eq 'a 'a) '())
+
+(eval. '(cons x '(b c))
+'((x a) (y b)))
+
+(eval. '(cond ((atom x) 'atom)
+('t 'list))
+'((x '(a b))))
+
+(eval. '(f '(b c))
+'((f (lambda (x) (cons 'a x)))))
+
+(eval. '((label firstatom (lambda (x)
+(cond ((atom x) x)
+('t (firstatom (car x))))))
+y)
+'((y ((a b) (c d)))))
+
+(eval. '((lambda (x y) (cons x (cdr y)))
+'a
+'(b c d))
+'())
+
