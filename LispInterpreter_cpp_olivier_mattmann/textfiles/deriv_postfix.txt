@@ -49,5 +49,8 @@
 (define (multiplier p) (car p))
 (define (multiplicand p) (car (cdr p)))
 
+
+
+(quote (examples from the book:))
 (deriv-post '(x 3 +) 'x)
 (deriv-post '(x y *) 'x)

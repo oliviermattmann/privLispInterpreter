@@ -28,7 +28,7 @@ public:
     virtual std::string inspect() = 0;
     virtual Types getType() = 0;
 };
-
+// True, False and Nil Types
 class TrueType: public Type {
 public:
     virtual std::string inspect();
@@ -53,6 +53,7 @@ private:
     std::string sym = "()";
 };
 
+//number types
 class IntType: public Type {
 public:
     IntType(std::string);
@@ -74,6 +75,7 @@ private:
     double val;
 };
 
+//SymbolType
 class SymbolType: public Type {
 public:
     SymbolType(std::string);
@@ -84,6 +86,7 @@ private:
     std::string str_val;
 };
 
+//ListType
 class ListType: public Type {
 public:
     ListType();
@@ -100,6 +103,7 @@ private:
     std::vector<Type*> list;
 };
 
+//parent class of the function types
 class FuncType: public Type {
 };
 

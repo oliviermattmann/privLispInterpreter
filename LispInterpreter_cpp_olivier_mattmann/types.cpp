@@ -119,7 +119,7 @@ BuiltInFuncType::BuiltInFuncType(func_p f_p) {
     fp = f_p;
 }
 std::string BuiltInFuncType::inspect() {
-    return "<fn... represent function somehow?>";
+    return "<Built-in function>";
 }
 
 Types BuiltInFuncType::getType() {

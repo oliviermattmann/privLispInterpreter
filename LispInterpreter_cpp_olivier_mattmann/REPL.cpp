@@ -74,12 +74,17 @@ Type* EVAL(Type* ast, Env *env = global_env) {
 
             }
         } else if (firstSymbol == "defun") {
+            //this is an alternative way to define functions, mainly used in the graham article
+            //the syntax for this special form is:
+            //(defun <function name> (<parameters>) <body>)
             //index 1 = name
             std::string functionName = SymAndParams->at(1)->inspect();
             //index 2 = parameters
             ListType *bindSymbols = DYNAMIC_CAST(ListType, SymAndParams->getList().at(2));
             //index 3 = body
             Type *body = SymAndParams->getList().at(3);
+            //the same approach as with the define special form is used, i.e we create a new ast that is using
+            //the lambda special form to define the function
             std::vector<Type*> content;
             content.push_back(new SymbolType("lambda"));
             content.push_back(bindSymbols);
@@ -147,13 +152,6 @@ Type* EVAL(Type* ast, Env *env = global_env) {
             //we should never end up here in a correct lisp program
             throw "no cond option matched!";
             return new SymbolType("");
-        } else if (firstSymbol == "begin") {
-            for (uint32_t i = 1; i < SymAndParams->getList().size(); i++) {
-                EVAL(SymAndParams->getList().at(i), env);
-                if (i == SymAndParams->getList().size()) {
-                    return EVAL(SymAndParams->getList().at(SymAndParams->getList().size()-1), env);
-                }
-            }
         } else {
                 //If we end up here we are not dealing with a special form
                 //The options are: Built-in function , LambdaFuncType
@@ -226,7 +224,7 @@ std::string PRINT(Type* expression) {
 
 std::string REPL(std::string input, Env *env) {
     //we first read/parse the input, then evaluate the generated AST with the provided environment
-    //and after the evaluation is done we get the AST converted back
+    //and after the evaluation we print the resulting expression
     return PRINT(EVAL(READ(input), env));
 }
 

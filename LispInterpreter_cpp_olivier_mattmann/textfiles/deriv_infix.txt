@@ -50,5 +50,7 @@
 (define (multiplier p) (car p))
 (define (multiplicand p) (car (cdr (cdr p))))
 
+
+(quote (examples from the book:))
 (deriv-infix '(x + 3) 'x)
 (deriv-infix '(x * y) 'x)

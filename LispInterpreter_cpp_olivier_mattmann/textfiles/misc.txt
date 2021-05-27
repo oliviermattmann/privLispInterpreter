@@ -5,6 +5,8 @@
 
 (define (map f lst) (if (null? lst) nil (cons (f (car lst)) (map f (cdr lst)))))
 
+
+(quote (define filter procedure:))
 (define (filter pred lst)
     (cond ((null? lst) nil)
           ((pred (car lst))(cons (car lst) (filter pred (cdr lst))))
@@ -15,6 +17,10 @@
         (if (comp x n)
             't
             '())))
+
+(quote (test filter with list (1 2 3 4 5 6 7 8 9 10) element >= 5))
+
+(filter (pred >= 5) (list 1 2 3 4 5 6 7 8 9 10))
 
 (define (f x y)
 (let* (a (+ 1 (* x y))

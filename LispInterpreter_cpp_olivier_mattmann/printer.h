@@ -1,6 +1,3 @@
-//
-// Created by Startklar on 30.04.2021.
-//
 
 #ifndef CPPLISPINTERPRETER_PRINTER_H
 #define CPPLISPINTERPRETER_PRINTER_H

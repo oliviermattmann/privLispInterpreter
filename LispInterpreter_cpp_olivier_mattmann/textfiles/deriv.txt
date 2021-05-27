@@ -49,7 +49,7 @@
 (define (multiplier p) (car(cdr p)))
 (define (multiplicand p) (car(cdr(cdr p))))
 
-
+(quote (examples from the book:))
 (deriv '(+ x 3) 'x)
 (deriv '(* x y) 'x)
 

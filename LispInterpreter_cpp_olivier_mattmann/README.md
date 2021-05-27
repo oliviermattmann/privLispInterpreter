@@ -17,13 +17,22 @@
     3) there is no set! special form, but you can redefine existing Symbol Value pairs 
        in the environment.
        
-    4) The homework exercises and the Lisp Interpreter from Graham can be found in the textfiles folder. There were minimal changes done to the code snippets from Graham, namely the expressions of the form (cddr x) were split into (cdr (cdr x))
+    4) The homework exercises and the Lisp Interpreter from Graham can be found in the textfiles folder. There were 
+       minimal changes done to the code snippets from Graham, namely the expressions of the form (cddr x) were split
+       into (cdr (cdr x))
        
     5) The let* special form is implemented as specified in the MAL-guide. It is defined like this:
        (let* (var1 value1 var2 value2) (body))
        as opposed to the SICP book:
        (let ((var1 value1) (var2 value2)) (body))
        
-    6) Small note on the load function: expressions which are in enclosed in parenthesis don't work or won't get recognized. eg. "'a" won't work in when loading it from a textfile. To load files use the command: (load "filepath").    
+    6) Small note on the load function: expressions which are in enclosed in parenthesis don't work or won't 
+       get recognized. eg. "'a" won't work in when loading it from a textfile. To load files use the
+       command: (load "filepath").    
 
-I have included the compiled files for Windows and Linux (if you are using macOS you may need to delete and recompile with the provided Makefile).
+I have included the compiled files for Windows and Linux (if you are using macOS you may need to delete and recompile
+with the provided Makefile).
+
+The available special forms can be found in the eval function in the REPL file. For all available built-in functions
+you could refer to the setBuiltIns method in the Env.cpp file for a small overview or refer to the 
+builtin_functions.cpp file for the implementations.
