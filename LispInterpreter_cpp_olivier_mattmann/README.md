@@ -1,5 +1,5 @@
 # Lisp Interpreter in C++
-## Olivier Mattmann
+This minimal lisp interpreter was written as part of a seminar at the University of Basel. It is strongly influenced by the MAL (https://github.com/kanaka/mal) and partly by the book "Structure and Interpretation of Computer Programs) and the paper "The Roots of Lisp" by Paul Graham.  It is in no way complete, nor free of errors. To try it out you can either build it yourself or run the compiled executables.
 
 ### Things to keep in mind:
 
